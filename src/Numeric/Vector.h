@@ -12,8 +12,8 @@
 *  Author: Ayoub Ouarrak
 */
 
-#ifndef QUADRATIC_SIEVE_VECTOR_GUARDIAN
-#define QUADRATIC_SIEVE_VECTOR_GUARDIAN
+#ifndef QUADRATIC_SIEVE_VECTOR_GUARD
+#define QUADRATIC_SIEVE_VECTOR_GUARD
 #include <iostream>
 #include <algorithm>
 #include <iterator>
