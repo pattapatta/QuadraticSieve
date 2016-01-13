@@ -15,4 +15,51 @@
 #ifndef QUADRATIC_SIEVE_MATRIX_GUARD
 #define QUADRATIC_SIEVE_MATRIX_GUARD
 
+namespace QS {
+namespace Numeric {
+
+template <typename T>
+class Matrix {
+
+private:
+    Vector<Vector<T> > _matrix;
+    std::size_t _rows;
+    std::size_t _cols;
+
+public:
+    Matrix();
+    Matrix(unsigned rows, unsigned cols, const T& _initial);
+    Matrix(const Matrix<T>& rhs);
+    ~Matrix();
+
+    // operators overloading
+    Matrix<T> operator+(const Matrix<T>& rhs);
+    Matrix<T> operator-(const Matrix<T>& rhs);
+    Matrix<T> operator*(const Matrix<T>& rhs);
+
+    // scalar operators overloading
+    Matrix<T> operator+(const T& rhs);
+    Matrix<T> operator-(const T& rhs);
+    Matrix<T> operator*(const T& rhs);
+    Matrix<T> operator/(const T& rhs);
+
+    vector<T> operator*(const vector<T>& rhs);
+
+    // assignment operator
+    Matrix<T>& operator=(const Matrix<T>& rhs);
+    // access element operator overloading
+    T& operator()(const unsigned& row, const unsigned& col);
+    // access element operator (read only)
+    const T& operator()(const unsigned& row, const unsigned& col) const;
+
+    // return the number of rows
+    std::size_t rows() const;
+    // return the number fo cols
+    std::size_t cols() const;
+    // find a element in the matrix and the return the index i and j 
+    std::make_pair<unsigned, unsigned> find(const T& f) const;
+};
+
+}
+}
 #endif

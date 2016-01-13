@@ -24,24 +24,42 @@ namespace Numeric {
 
 template <typename T>
 class Vector {
+
 private:
-    T* _components;
-    unsigned _size;
+    T* _component;
+    std::size_t _size;
 
 public:
     Vector();
     ~Vector();
     explicit Vector(unsigned size);
-    Vector(unsigned size, T initValue);
+    Vector(const Vector<T>& v);
+    Vector(unsigned size, const T& initValue);
 
+    // return the size of the vector
+    std::size_t size() const;
+    // find a element in the vector and return the index
+    unsigned find(const T& f) const;
 
-    unsigned size() const;
+    // access operators overloading
     T& operator[](size_type index);
+    // access operator (only read mode)
     const T& operator[](unsigned index) const;
+    // assignment operator
+    Vector<T>& operator=(const Vector<T>& rhs);
 
-    /**
-        Iterators definition
-    */
+    // vector-vector operators overloading
+    Vector<T> operator+(const Vector<T>& rhs);
+    Vector<T> operator-(const Vector<T>& rhs);
+    Vector<T> operator*(const Vector<T>& rhs);
+
+    // scalar-vector operators overloading
+    Vector<T> operator+(const T& rhs);
+    Vector<T> operator-(const T& rhs);
+    Vector<T> operator*(const T& rhs);
+    Vector<T> operator/(const T& rhs);
+
+    // Iterators definition
     class iterator {
     private:
         pointer _ptr;
@@ -84,8 +102,9 @@ public:
         bool operator!=(const self_type& rhs);
     };
 
+public:
     iterator begin();
-    iterator end()
+    iterator end();
     const_iterator begin() const;
     const_iterator end() const;
 };
