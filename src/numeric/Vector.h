@@ -17,34 +17,44 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
-#include <cassert>
+#include <string>
 
 namespace QS {
 namespace Numeric {
 
-template <typename T>
+template <class T>
 class Vector {
 
 private:
     T* _component;
     std::size_t _size;
 
+protected:
+    bool rangeCheck(std::size_t index);
+    bool rangeCheck(std::string range);
+
 public:
     Vector();
     ~Vector();
-    explicit Vector(unsigned size);
+    explicit Vector(std::size_t size);
     Vector(const Vector<T>& v);
-    Vector(unsigned size, const T& initValue);
+    Vector(std::size_t size, const T& initValue);
 
     // return the size of the vector
     std::size_t size() const;
+    
     // find a element in the vector and return the index
-    unsigned find(const T& f) const;
+    std::size_t find(const T& f) const;
+
+    // slice the vector from n to m, the range is a string with the following syntax "n:m"
+    Vector<T> operator[](std::string range);
 
     // access operators overloading
-    T& operator[](size_type index);
+    T& operator[](std::size_t index);
+
     // access operator (only read mode)
-    const T& operator[](unsigned index) const;
+    const T& operator[](std::size_t index) const;
+
     // assignment operator
     Vector<T>& operator=(const Vector<T>& rhs);
 

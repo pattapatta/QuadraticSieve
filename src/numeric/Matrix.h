@@ -14,11 +14,13 @@
 
 #ifndef QUADRATIC_SIEVE_MATRIX_GUARD
 #define QUADRATIC_SIEVE_MATRIX_GUARD
+#include "Vector.h"
+#include <string>
 
 namespace QS {
 namespace Numeric {
 
-template <typename T>
+template <class T>
 class Matrix {
 
 private:
@@ -26,9 +28,13 @@ private:
     std::size_t _rows;
     std::size_t _cols;
 
+protected:
+    bool rangeCheck(std::size_t index);
+    bool rangeCheck(std::string range);
+
 public:
     Matrix();
-    Matrix(unsigned rows, unsigned cols, const T& _initial);
+    Matrix(std::size_t rows, std::size_t cols, const T& _initial);
     Matrix(const Matrix<T>& rhs);
     ~Matrix();
 
@@ -47,17 +53,37 @@ public:
 
     // assignment operator
     Matrix<T>& operator=(const Matrix<T>& rhs);
+
+    // slice the matrix from row1 to row2 or , the range is expressed like "n:m"
+    Matrix<T> operator[](std::string range);
+
+    // return a row from the matrix, if index is negative return the col
+    // eg: v[4] return the 4th row, v[-4] return the 4th col
+    Vector<T> operator[](signed long index);
+
+    // return a row from the matrix, if index is negative return the col (read only)
+    const Vector<T>& operator[](signed long index) const;
+
     // access element operator overloading
-    T& operator()(const unsigned& row, const unsigned& col);
+    T& operator()(std::size_t row, std::size_t col);
+
     // access element operator (read only)
-    const T& operator()(const unsigned& row, const unsigned& col) const;
+    const T& operator()(std::size_t row, std::size_t col) const;
 
     // return the number of rows
     std::size_t rows() const;
     // return the number fo cols
     std::size_t cols() const;
+
     // find a element in the matrix and the return the index i and j 
-    std::make_pair<unsigned, unsigned> find(const T& f) const;
+    std::make_pair<std::size_t, std::size_t> find(const T& f) const;
+
+    // swap two rows in the matrix
+    void swapR(const Vector<T>& row1, const Vector<T>& row2);
+    // swap two cols in the matrix
+    void swapC(const Vector<T>& col1, const Vecotr<T>& col2);
+    // swap two elemements in the matrix
+    void swap(std::size_t row1, std::size_t col1, std::size_t row2, std::size_t col2);
 };
 
 }
