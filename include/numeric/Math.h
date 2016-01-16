@@ -16,7 +16,7 @@
 #include <cmath>
 
 namespace QS {
-namespace Math {
+namespace math {
 
 /**
     Compute the Greatest common divisor through the Euclide algorithm.

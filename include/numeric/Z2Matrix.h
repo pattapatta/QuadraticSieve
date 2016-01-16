@@ -18,7 +18,7 @@
 #include <bitset>
 
 namespace QS {
-namespace Numeric {
+namespace numeric {
 
 template <class T, std::size_t cols>
 class Z2Matrix : public Matrix<T> {
@@ -27,10 +27,10 @@ private:
 
 public:
     Z2Matrix();
-    explicit Z2Matrix(std::size_t rows);
     Z2Matrix(const Z2Matrix<cols>& rhs);
-    Z2Matrix(const Matrix<T>& rhs);
-    ~Z2Matrix();
+    explicit Z2Matrix(std::size_t rows);
+    explicit Z2Matrix(const Matrix<T>& rhs);
+    virtual ~Z2Matrix();
 
     // flip the bit in position row, col 
     void flip(std::size_t row, std::size_t col);

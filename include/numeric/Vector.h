@@ -20,7 +20,7 @@
 #include <string>
 
 namespace QS {
-namespace Numeric {
+namespace numeric {
 
 template <class T>
 class Vector {
@@ -35,7 +35,7 @@ protected:
 
 public:
     Vector();
-    ~Vector();
+    virtual ~Vector();
     explicit Vector(std::size_t size);
     Vector(const Vector<T>& v);
     Vector(std::size_t size, const T& initValue);

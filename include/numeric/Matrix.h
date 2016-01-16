@@ -18,7 +18,7 @@
 #include <string>
 
 namespace QS {
-namespace Numeric {
+namespace numeric {
 
 template <class T>
 class Matrix {
@@ -36,7 +36,7 @@ public:
     Matrix();
     Matrix(std::size_t rows, std::size_t cols, const T& _initial);
     Matrix(const Matrix<T>& rhs);
-    ~Matrix();
+    virtual ~Matrix();
 
     // operators overloading
     Matrix<T> operator+(const Matrix<T>& rhs);
