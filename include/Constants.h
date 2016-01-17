@@ -16,7 +16,15 @@
 
 namespace QS {
 
+// if true active the terminal verbose mode
 const bool VERBOSE = false;
+// if true active the backup system
+const bool ENABLE_BACKUP = false;
+// directory to save file log
+const char* LOG_DIR = "../log/";
+
+
+const 
 
 
 }

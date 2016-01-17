@@ -23,7 +23,7 @@ namespace numeric {
 template <class T, std::size_t cols>
 class Z2Matrix : public Matrix<T> {
 private:
-    vector<std::bitset<cols> > _bits;
+    vector<std::bitset<cols>> _bits;
 
 public:
     Z2Matrix();
@@ -47,6 +47,9 @@ public:
     // check if two row are equal
     bool check(const std::bitset<cols>& row1, const std::bitset<cols>& row2) const;
 
+    // reduce matrix using gauss elimination
+    Z2Matrix<cols> reduce();
+    
     // AND bitwise operator overloading
     Z2Matrix<cols> operator&(const Z2Matrix<cols>& rhs) const; 
     // NOT bitwise operator overloading

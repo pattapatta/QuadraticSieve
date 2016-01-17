@@ -24,7 +24,7 @@ template <class T>
 class Matrix {
 
 private:
-    Vector<Vector<T> > _matrix;
+    Vector<Vector<T>> _matrix;
     std::size_t _rows;
     std::size_t _cols;
 
@@ -74,6 +74,9 @@ public:
     std::size_t rows() const;
     // return the number fo cols
     std::size_t cols() const;
+
+    // return the transposed matrix
+    Matrix<T> transpose();
 
     // find a element in the matrix and the return the index i and j 
     std::make_pair<std::size_t, std::size_t> find(const T& f) const;
